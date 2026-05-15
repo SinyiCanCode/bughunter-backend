@@ -3,8 +3,6 @@
 Cobre operações CRUD, autorização e isolamento entre usuários.
 Inclui regressão para BUG-003 (truncamento silencioso de título).
 """
-import pytest
-
 
 class TestCreateTask:
     """POST /tasks"""

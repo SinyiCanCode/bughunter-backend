@@ -5,7 +5,6 @@ Autenticação simplificada via header X-User-Id para fins didáticos
 (em produção: JWT ou cookie de sessão).
 """
 from fastapi import FastAPI, HTTPException, Header, status
-from pydantic import ValidationError
 
 from .models import (
     UserSignup,
@@ -37,7 +36,6 @@ def signup(payload: UserSignup):
 def login(payload: UserLogin):
     user = storage.verify_password(payload.email, payload.password)
     if not user:
-        # Mensagem genérica — evita enumeração de usuários
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Email ou senha incorretos",
